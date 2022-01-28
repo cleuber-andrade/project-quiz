@@ -43,13 +43,14 @@ export default class QuestaoModel {
     const respostas = this.resposta.map((resposta, i)=> {
       const respostaSelecionada = indice === i;
       const deveRevelar = respostaSelecionada || resposta.certa;
-      return respostaSelecionada ? respostas.revelar() : respostas
+      return deveRevelar ? respostas.revelar() : respostas
     })
+    return new QuestaoModel(this.#id, this.#enunciado, respostas, acertou)
   }  
 
   embaralharRespostas(): QuestaoModel {
     let respostaEmbaralhadas = embaralhar(this.#resposta)
-    return new QuestaoModel(this.#id, this.enunciado, respostaEmbaralhadas, this.#acertou)
+    return new QuestaoModel(this.#id, this.#enunciado, respostaEmbaralhadas, this.#acertou)
   }
 
   converterParaObjeto(){
