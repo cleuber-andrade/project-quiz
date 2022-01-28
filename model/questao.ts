@@ -5,6 +5,7 @@ export default class QuestaoModel {
   #enunciado: string
   #resposta: RespostaModel[]
   #acertou: boolean
+
   //#respondida: boolean
 
 
@@ -26,7 +27,7 @@ export default class QuestaoModel {
   get resposta(){
     return this.#resposta
   }
-
+  
   get acertou(){
     return this.#acertou
   }

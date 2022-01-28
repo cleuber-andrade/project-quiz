@@ -3,7 +3,7 @@ export default class RespostaModel {
   #certa: boolean
   #revelada: boolean
 
-  constructor(valor: string, certa: boolean, revelada: false){
+  constructor(valor: string, certa: boolean, revelada: boolean){
     this.#valor = valor
     this.#certa = certa
     this.#revelada = revelada

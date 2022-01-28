@@ -16,14 +16,14 @@ const questoes: QuestaoModel[] = [
     RespostaModel.certa("Abóbora"),
   ]),
 
-  new QuestaoModel(202, "Qual é o coletivo de cães?", [
+  new QuestaoModel(304, "Qual é o coletivo de cães?", [
     RespostaModel.errada("Manada"),
     RespostaModel.errada("Alcatéia"),
     RespostaModel.errada("Rebanho"),
     RespostaModel.certa("Matilha"),
   ]),
 
-  new QuestaoModel(202, "Qual é o triângulo que tem todos os lados diferentes?", [
+  new QuestaoModel(700, "Qual é o triângulo que tem todos os lados diferentes?", [
     RespostaModel.errada("Equilátero"),
     RespostaModel.errada("Isóceles"),
     RespostaModel.errada("Trapézio"),
