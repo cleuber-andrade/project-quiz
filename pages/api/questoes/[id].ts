@@ -7,6 +7,7 @@ export default function selecaoQuestoes (req, res) {
 
   if(unicaQuestaoOuNada.length === 1){
     const questaoSelecionada = unicaQuestaoOuNada[0].embaralharRespostas();
+    questaoSelecionada.responderCom(0).converterParaObjeto()
     res.status(200).json(questaoSelecionada.converterParaObjeto());
   }else{
     res.status(204).send();
