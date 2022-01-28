@@ -17,7 +17,7 @@ export default function Questao(props: QuestaoProps){
         valor={resp}
         indice={i}
         letra="A"
-        corLetra="#f2c866"
+        corFundoLetra="#f2c866"
       /> 
     })
   }
