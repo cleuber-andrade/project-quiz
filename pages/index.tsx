@@ -19,7 +19,7 @@ export default function Home() {
   }
 
   function tempoEsgotado(){   
-    if(!questao.respondida){
+    if(questao.naoRespondida){
       setQuestao(questao.responderCom(-1))
     }    
   }
