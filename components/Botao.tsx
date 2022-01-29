@@ -10,14 +10,16 @@ interface BotaoPorps {
 export default function Botao(props: BotaoPorps){
 
   function renderizarBotao(){
-    <button className={styles.botao} onClick={props.onClick}>      
-      {props.texto}
-    </button>
+    return(
+      <button className={styles.botao} onClick={props.onClick}>      
+        {props.texto}
+      </button>
+    )    
   }
 
   return props.href ? (
     <Link href={props.href} passHref>
-      {renderizarBotao}
+      {renderizarBotao()}
     </Link>    
   ):  renderizarBotao()
 }

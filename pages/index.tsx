@@ -42,8 +42,8 @@ export default function Home() {
         tempoParaResposta={15}
         respostaFornecida={respostaFornecida}
         tempoEsgotado={tempoEsgotado}/>
-        
-      <Botao texto="Proxima" href="/resultado" onClick={}/>
+
+      <Botao texto="Proxima" href="/resultado"/>
     </div>
   )
 }
