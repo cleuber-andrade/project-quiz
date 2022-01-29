@@ -1,3 +1,4 @@
+import styles from "../styles/Questionario.module.css";
 import QuestaoModel from "../model/questao";
 
 
