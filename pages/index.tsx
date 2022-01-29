@@ -18,8 +18,10 @@ export default function Home() {
     setQuestao(questao.responderCom(indice))
   }
 
-  function tempoEsgotado(){    
-    setQuestao(questao.responderCom(-1))
+  function tempoEsgotado(){   
+    if(!questao.respondida){
+      setQuestao(questao.responderCom(-1))
+    }    
   }
 
   return (

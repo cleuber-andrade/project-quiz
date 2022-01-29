@@ -20,12 +20,9 @@ export default function Temporizador(props: TemporizadorProps){
           '#f7b801',
           '#ed827a',          
         ]}
-        colorsTime={[
-          8,
-          6,
-          0,          ,
-        ]}        
-      />
+        colorsTime={[8,6,0]}>
+          {({remainingTime}) => remainingTime}
+      </CountdownCircleTimer>
     </div>
   )
 }
