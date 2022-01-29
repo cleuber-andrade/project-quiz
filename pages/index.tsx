@@ -13,8 +13,8 @@ const questaoMock = new QuestaoModel(1, "Melhor cor?", [
 const BASE_URL = "http://localhost:3000/api";
 
 export default function Home() {
-  const[idsDasQuestoes, setIdsDasQuestoes] = useState([]);
-  const [questao, setQuestao] = useState(questaoMock);  
+  const[idsDasQuestoes, setIdsDasQuestoes] = useState<number[]>([]);
+  const [questao, setQuestao] = useState<QuestaoModel>();  
 
   async function carregarIdsDasQuestoes(){
     const resp = await fetch(`${BASE_URL}/questionario`)
@@ -49,7 +49,7 @@ export default function Home() {
     <div>
       <Questionario 
         questao={questao}
-        ultima={true}
+        ultima={false}
         questaoRespondida={questaoRespondida}
         irParaProximoPasso={irParaProximoPasso}
       />

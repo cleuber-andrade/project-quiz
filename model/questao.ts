@@ -60,9 +60,9 @@ export default class QuestaoModel {
 
   static criarUsandoObj(obj: QuestaoModel): QuestaoModel{
 
-    const resp = obj.resposta.map(resp => RespostaModel.criarUsandoObj(resp));
+    const respostas = obj.#respostas.map(resp => RespostaModel.criarUsandoObj(resp));
 
-    return new QuestaoModel(obj.id, obj.enunciado, resp, obj.acertou)
+    return new QuestaoModel(obj.id, obj.enunciado, respostas, obj.acertou)
   }
 
   converterParaObjeto(){
