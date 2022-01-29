@@ -17,6 +17,16 @@ export default class RespostaModel {
     return new RespostaModel(valor, false)
   }
 
+  //const resp = new RespostaModel(...)
+  //resp.metodoDeInsaância()
+
+  //metodo static
+  //RespostaModel.metodoStatic()
+
+  static criarUsandoObjeto(obj: RespostaModel): RespostaModel{
+    return new RespostaModel(obj.valor, obj.certa, obj.revelada)
+  }
+
   get valor(){
     return this.#valor
   }

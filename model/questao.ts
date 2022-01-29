@@ -15,7 +15,7 @@ export default class QuestaoModel {
     this.#acertou = acertou
   }
 
-  
+    
   get id(){
     return this.#id
   }
@@ -42,7 +42,7 @@ export default class QuestaoModel {
     }
     return false
   } 
-
+  
   responderCom(indice: number): QuestaoModel{
     const acertou = this.#respostas[indice]?.certa
     const respostas = this.#respostas.map((resposta, i)=> {
@@ -57,6 +57,12 @@ export default class QuestaoModel {
     let respostaEmbaralhadas = embaralhar(this.#respostas)
     return new QuestaoModel(this.#id, this.#enunciado, respostaEmbaralhadas, this.#acertou)
   }  
+
+  static criarUsandoObjeto(obj: QuestaoModel): QuestaoModel {
+    const respostas = obj.#respostas.map(resp => RespostaModel.criarUsandoObjeto(resp))
+    return new QuestaoModel(obj.id, obj.enunciado, respostas, obj.acertou)
+  }
+
 
   converterParaObjeto(){
     return {
