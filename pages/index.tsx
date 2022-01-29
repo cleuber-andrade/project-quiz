@@ -10,13 +10,17 @@ const questaoMock = new QuestaoModel(1, "Melhor cor?", [
   RespostaModel.certa("Cinza"),
 ])
 
-export default function Home() {
-  const [questao, setQuestao] = useState(questaoMock);
-  const questaoRef = useRef<QuestaoModel>();
+const BASE_URL = "http://localhost:3000/api";
 
-  useEffect(()=> {
-    questaoRef.current = questao
-  }, [questao])
+export default function Home() {
+  const[idsDasQuestoes, setIdsDasQuestoes] = useState([]);
+  const [questao, setQuestao] = useState(questaoMock);  
+
+  async function carregarIdsDasQuestoes(){
+    const resp = await fetch(`${BASE_URL}/questionario`)
+    const identificardorDasQuestoes = await resp.json()
+    setIdsDasQuestoes(identificardorDasQuestoes)
+  }
 
   function questaoRespondida(questao: QuestaoModel){
     
@@ -27,13 +31,7 @@ export default function Home() {
   }
 
   return (
-    <div style={{ 
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh",
-    }}>
+    <div>
       <Questionario 
         questao={questao}
         ultima={true}
