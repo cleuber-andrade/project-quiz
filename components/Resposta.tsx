@@ -16,7 +16,7 @@ export default function Resposta(props: RespostaProps){
   return (
     <div className={styles.resposta} onClick={() => props.respostaFornecida(props.indice)}>      
       <div className={styles.conteudoResposta}>
-      {resposta.revelada ? (
+      {!resposta.revelada ? (
         <div className={styles.frente}> 
           <div className={styles.letra} style={{ backgroundColor: props.    corFundoLetra }}>          
             {props.letra}
