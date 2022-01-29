@@ -22,6 +22,20 @@ export default function Home() {
     setIdsDasQuestoes(identificardorDasQuestoes)
   }
 
+  async function carregarQuestao(idQuestao: number){
+    const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`)
+    const json = await resp.json()
+    
+  }
+
+  useEffect(()=>{
+    carregarIdsDasQuestoes()
+  },[])
+
+  useEffect(()=>{
+    idsDasQuestoes.length > 0 && carregarQuestao(idsDasQuestoes[0]) 
+  },[idsDasQuestoes])
+
   function questaoRespondida(questao: QuestaoModel){
     
   }
