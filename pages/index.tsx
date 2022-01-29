@@ -23,9 +23,10 @@ export default function Home() {
   }
 
   async function carregarQuestao(idQuestao: number){
-    const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`)
-    const json = await resp.json()
-    console.log(json)
+    const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`);
+    const json = await resp.json();
+    const novaQuestao = QuestaoModel.criarUsandoObj(json);
+    setQuestao(novaQuestao);
   }
 
   useEffect(()=>{
