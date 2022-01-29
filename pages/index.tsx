@@ -11,9 +11,10 @@ const questaoMock = new QuestaoModel(1, "Melhor cor?", [
 ])
 
 export default function Home() {
-  const [ questao, setQuestao] = useState(questaoMock)
+  const [questao, setQuestao] = useState(questaoMock);
 
   function respostaFornecida(indice: number){
+    console.log(indice)
     setQuestao(questao.responderCom(indice))
   }
 
