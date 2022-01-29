@@ -14,17 +14,22 @@ interface QuestionarioProps {
 export default function Questionario(props: QuestionarioProps){
 
   function respostaFornecida(indice: number){
-
+    if(props.questao.naoRespondida){
+      props.questaoRespondida(props.questao.responderCom(indice))
+    }
   }
 
   return(
     <div className={styles.questionario}>
-      <Questao 
-        valor={props.questao}
-        tempoParaResposta={6}
-        respostaFornecida={respostaFornecida}
-        tempoEsgotado={props.irParaProximoPasso}
-      />
+      {props.questao ? 
+        <Questao 
+          valor={props.questao}
+          tempoParaResposta={6}
+          respostaFornecida={respostaFornecida}
+          tempoEsgotado={props.irParaProximoPasso}
+        />
+        : false
+      }      
 
       <Botao 
         onClick={props.irParaProximoPasso}
