@@ -37,8 +37,8 @@ export default function Home() {
     idsDasQuestoes.length > 0 && carregarQuestao(idsDasQuestoes[0]) 
   },[idsDasQuestoes])
 
-  function questaoRespondida(questao: QuestaoModel){
-    
+  function questaoRespondida(questaoRespondida: QuestaoModel){
+    setQuestao(questaoRespondida)
   }
 
   function irParaProximoPasso() {
