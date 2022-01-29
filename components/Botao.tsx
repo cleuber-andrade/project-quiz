@@ -9,7 +9,7 @@ interface BotaoPorps {
 
 export default function Botao(props: BotaoPorps){
 
-  function renderizaBotao(){
+  function renderizarBotao(){
     <button className={styles.botao} onClick={props.onClick}>      
       {props.texto}
     </button>
@@ -17,7 +17,7 @@ export default function Botao(props: BotaoPorps){
 
   return props.href ? (
     <Link href={props.href} passHref>
-      {renderizaBotao}
+      {renderizarBotao}
     </Link>    
-  ):  renderizaBotao()
+  ):  renderizarBotao()
 }
