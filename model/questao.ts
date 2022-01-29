@@ -4,14 +4,14 @@ import { embaralhar } from "../function/arrays";
 export default class QuestaoModel {
   #id: number
   #enunciado: string
-  #resposta: RespostaModel[]
+  #respostas: RespostaModel[]
   #acertou: boolean 
 
 
-  constructor(id: number, enunciado: string, resposta: RespostaModel[], acertou = false){
+  constructor(id: number, enunciado: string, respostas: RespostaModel[], acertou = false){
     this.#id = id
     this.#enunciado = enunciado
-    this.#resposta = resposta
+    this.#respostas = respostas
     this.#acertou = acertou
   }
 
@@ -24,7 +24,7 @@ export default class QuestaoModel {
   }
 
   get resposta(){
-    return this.#resposta
+    return this.#respostas
   }
   
   get acertou(){
@@ -32,24 +32,24 @@ export default class QuestaoModel {
   }
 
   get respondida(){
-    for(let resposta of this.#resposta){
+    for(let resposta of this.#respostas){
       if(resposta.revelada) return true
     }
     return false
   }
 
   responderCom(indice: number): QuestaoModel{
-    const acertou = this.#resposta[indice]?.certa
-    const respostas = this.resposta.map((resposta, i)=> {
+    const acertou = this.#respostas[indice]?.certa
+    const respostas = this.#respostas.map((resposta, i)=> {
       const respostaSelecionada = indice === i;
       const deveRevelar = respostaSelecionada || resposta.certa;
-      return deveRevelar ? respostas.revelar() : respostas
+      return deveRevelar ? resposta.revelar() : resposta
     })
     return new QuestaoModel(this.#id, this.#enunciado, respostas, acertou)
   }  
 
   embaralharRespostas(): QuestaoModel {
-    let respostaEmbaralhadas = embaralhar(this.#resposta)
+    let respostaEmbaralhadas = embaralhar(this.#respostas)
     return new QuestaoModel(this.#id, this.#enunciado, respostaEmbaralhadas, this.#acertou)
   }
 
@@ -57,7 +57,7 @@ export default class QuestaoModel {
     return {
       id: this.#id,
       enunciado: this.#enunciado,
-      resposta: this.#resposta.map(resp => resp.converterParaObjeto()),
+      resposta: this.#respostas.map(resp => resp.converterParaObjeto()),
       respondida: this.respondida,
       acertou: this.#acertou,
     }
