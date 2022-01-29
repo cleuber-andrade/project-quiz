@@ -17,6 +17,10 @@ export default class RespostaModel {
     return new RespostaModel(valor, false)
   }
 
+  static criarUsandoObjeto(obj: RespostaModel ): RespostaModel{
+    return new RespostaModel(obj.#valor, obj.#certa, obj.#revelada)
+  }
+
   get valor(){
     return this.#valor
   }
@@ -32,11 +36,7 @@ export default class RespostaModel {
   revelar(){
     return new RespostaModel(this.#valor, this.#certa, true)
   }
-
-  static criarUsandoObj(obj: RespostaModel): RespostaModel{
-    return new RespostaModel(obj.valor, obj.certa, obj.revelada)
-  }
-
+  
   converterParaObjeto(){
     return {
       valor: this.#valor,
