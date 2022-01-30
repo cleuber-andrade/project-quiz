@@ -1,20 +1,17 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Questionario from "../components/Questionario"
 import QuestaoModel from "../model/questao"
-import RespostaModel from "../model/resposta"
+import { useRouter } from "next/router";
 
-const questaoMock = new QuestaoModel(1, "Melhor cor?", [
-  RespostaModel.errada("Verde"),
-  RespostaModel.errada("Azul"),
-  RespostaModel.errada("vermelho"),
-  RespostaModel.certa("Cinza"),
-])
+
 
 const BASE_URL = "http://localhost:3000/api";
 
 export default function Home() {
+  const router = useRouter();
+
   const [idsDasQuestoes, setidsDasQuestoes] = useState<number[]>([])
-  const [questao, setQuestao] = useState<QuestaoModel>(questaoMock);
+  const [questao, setQuestao] = useState<QuestaoModel>();
   const [respostasCertas, setRespostasCertas] = useState<number>(0)
 
   async function carregarIdsDasQuestoes() {
@@ -47,8 +44,10 @@ export default function Home() {
   }
 
   function IdProximaPergunda() {
-    const proximoIndice = idsDasQuestoes.indexOf(questao.id) + 1;
-    return idsDasQuestoes[proximoIndice];
+    if(questao){
+      const proximoIndice = idsDasQuestoes.indexOf(questao.id) + 1;
+      return idsDasQuestoes[proximoIndice];
+    }    
   }  
 
   function irParaProximoPasso() {
@@ -61,7 +60,7 @@ export default function Home() {
   }
 
   function finalizar(){
-
+    router.push("/resultado")
   }
 
   return (
