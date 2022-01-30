@@ -23,7 +23,7 @@ export default class RespostaModel {
   //metodo static
   //RespostaModel.metodoStatic()
 
-  static criarUsandoObjeto(obj: RespostaModel): RespostaModel{
+  static criarUsandoObj(obj: RespostaModel): RespostaModel{
     return new RespostaModel(obj.valor, obj.certa, obj.revelada)
   }
 
