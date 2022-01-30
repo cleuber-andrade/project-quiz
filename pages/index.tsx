@@ -40,18 +40,27 @@ export default function Home() {
     idsDasQuestoes.length > 0 && carregarQuestao(idsDasQuestoes[0]);
   },[idsDasQuestoes])
 
-  function IdProximaPergunda() {
-
-  }  
-
-  function questaoRespondida(questaoResposta : QuestaoModel){
-    setQuestao(questaoResposta)
-    const acertou =questaoRespondida.acertou;
-    setRespostasCertas(respostasCertas + (acertou ? 1 : 0))
-    console.log()
+  function questaoRespondida(questaoRespondida: QuestaoModel){
+    setQuestao(questaoRespondida)
+    const acertou = questaoRespondida.acertou;
+    setRespostasCertas(respostasCertas + (acertou ? 1 : 0));    
   }
 
+  function IdProximaPergunda() {
+    const proximoIndice = idsDasQuestoes.indexOf(questao.id) + 1;
+    return idsDasQuestoes[proximoIndice];
+  }  
+
   function irParaProximoPasso() {
+    const proximoId = IdProximaPergunda();
+    proximoId ? irPraProximaQuestao(proximoId) : finalizar()
+  }
+
+  function irPraProximaQuestao(proximoId : number) {
+    carregarQuestao(proximoId)
+  }
+
+  function finalizar(){
 
   }
 
@@ -59,7 +68,7 @@ export default function Home() {
     <div>
       <Questionario 
         questao={questao}
-        ultima={false}
+        ultima={IdProximaPergunda() === undefined}
         questaoRespondida={questaoRespondida}
         irParaProximoPasso={irParaProximoPasso}
       />
