@@ -12,7 +12,7 @@ interface RespostaProps {
 
 export default function Resposta(props: RespostaProps){
   const resposta = props.valor;
-  const respostaRevelada = resposta.revelada ? styles.respostaRevelada : ""
+  const respostaRevelada = resposta.revelada ? styles.respostaRevelada : "";
 
   return (
     <div className={styles.resposta} onClick={() => props.respostaFornecida(props.indice)}>      
@@ -37,8 +37,7 @@ export default function Resposta(props: RespostaProps){
               <div className={styles.valor}>{resposta.valor}</div>
             </div>
           )}          
-        </div>
-            
+        </div>            
       </div>
     </div>
   )

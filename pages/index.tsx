@@ -4,10 +4,9 @@ import QuestaoModel from "../model/questao"
 import { useRouter } from "next/router";
 
 
-
 const BASE_URL = "http://localhost:3000/api";
 
-export default function Home() {
+export default function Home() {  
   const router = useRouter();
 
   const [idsDasQuestoes, setidsDasQuestoes] = useState<number[]>([])
@@ -16,15 +15,17 @@ export default function Home() {
 
   async function carregarIdsDasQuestoes() {
     const resp = await fetch(`${BASE_URL}/questionario`);
-    const idsDasQuestoes = await resp.json();    
+    const idsDasQuestoes = await resp.json();      
     setidsDasQuestoes(idsDasQuestoes);
+    console.log(idsDasQuestoes)
   }
 
   async function carregarQuestao(idQuestao: number) {
     const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`);
     const json = await resp.json();      
     const novaQuestao = QuestaoModel.criarUsandoObjeto(json);
-    setQuestao(novaQuestao)
+    setQuestao(novaQuestao);
+    console.log(novaQuestao)
   }
 
   useEffect(()=> {    
@@ -35,9 +36,9 @@ export default function Home() {
     idsDasQuestoes.length > 0 && carregarQuestao(idsDasQuestoes[0]) 
   },[idsDasQuestoes])
 
-  function questaoRespondida(questaoRespondida: QuestaoModel){   
-    setQuestao(questaoRespondida)
-    const acertou = questaoRespondida.acertou;
+  function questaoRespondida(quesRespondida: QuestaoModel){   
+    setQuestao(quesRespondida)
+    const acertou = quesRespondida.acertou;
     setRespostasCertas(respostasCertas + (acertou ? 1 : 0));    
   }
 
