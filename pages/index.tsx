@@ -16,28 +16,26 @@ export default function Home() {
 
   async function carregarIdsDasQuestoes() {
     const resp = await fetch(`${BASE_URL}/questionario`);
-    const idsDasQuestoes = await resp.json();
-    console.log(idsDasQuestoes);
+    const idsDasQuestoes = await resp.json();    
     setidsDasQuestoes(idsDasQuestoes);
   }
 
   async function carregarQuestao(idQuestao: number) {
     const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`);
-    const json = await resp.json();  
-    console.log(QuestaoModel.criarUsandoObjeto(json));  
+    const json = await resp.json();      
     const novaQuestao = QuestaoModel.criarUsandoObjeto(json);
     setQuestao(novaQuestao)
   }
 
-  useEffect(()=> {
+  useEffect(()=> {    
     carregarIdsDasQuestoes();
   },[])
 
   useEffect(()=> {
-    idsDasQuestoes.length > 0 && carregarQuestao(idsDasQuestoes[0]);
+    idsDasQuestoes.length > 0 && carregarQuestao(idsDasQuestoes[0]) 
   },[idsDasQuestoes])
 
-  function questaoRespondida(questaoRespondida: QuestaoModel){
+  function questaoRespondida(questaoRespondida: QuestaoModel){   
     setQuestao(questaoRespondida)
     const acertou = questaoRespondida.acertou;
     setRespostasCertas(respostasCertas + (acertou ? 1 : 0));    
@@ -60,7 +58,13 @@ export default function Home() {
   }
 
   function finalizar(){
-    router.push("/resultado")
+    router.push({
+      pathname: "/resultado",
+      query: {
+        total: idsDasQuestoes.length,
+        certas: respostasCertas
+      }
+    })
   }
 
   return (
