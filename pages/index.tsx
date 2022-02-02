@@ -41,11 +41,9 @@ export default function Home() {
     setRespostasCertas(respostasCertas + (acertou ? 1 : 0));    
   }
 
-  function IdProximaPergunda() {
-    if(questao){
-      const proximoIndice = idsDasQuestoes.indexOf(questao.id) + 1;
-      return idsDasQuestoes[proximoIndice];
-    }    
+  function IdProximaPergunda() {   
+    const proximoIndice = idsDasQuestoes.indexOf(questao.id) + 1;
+    return idsDasQuestoes[proximoIndice];      
   }  
 
   function irParaProximoPasso() {
@@ -67,14 +65,13 @@ export default function Home() {
     })
   }
 
-  return (
-    <div>
+  return ( questao ? (
       <Questionario 
         questao={questao}
         ultima={IdProximaPergunda() === undefined}
         questaoRespondida={questaoRespondida}
         irParaProximoPasso={irParaProximoPasso}
       />
-    </div>
+    ) : false       
   )
 }
