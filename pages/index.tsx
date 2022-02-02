@@ -65,13 +65,12 @@ export default function Home() {
     })
   }
 
-  return ( questao ? (
+  return  questao ? (
       <Questionario 
         questao={questao}
         ultima={IdProximaPergunda() === undefined}
         questaoRespondida={questaoRespondida}
         irParaProximoPasso={irParaProximoPasso}
       />
-    ) : false       
-  )
+    ) : false  
 }
