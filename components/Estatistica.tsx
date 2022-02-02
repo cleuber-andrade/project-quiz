@@ -1,9 +1,9 @@
 import styles from "../styles/Estatisticas.module.css";
 
 interface EstisticaProps{
-  valor: any
-  texto: string
-  corFundo?:string
+  valor: any,
+  texto: string,
+  corFundo?:string,
   corFonte?: string   
 }
 
