@@ -22,7 +22,7 @@ export default function Questao(props: QuestaoProps){
   const questao = props.valor;
 
   function renderizarRespostas(){
-    return questao.resposta.map((resp, i)=> {
+    return questao.respostas.map((resp, i)=> {
       return <Resposta
         key={`${questao.id}-${i}`}
         valor={resp}
