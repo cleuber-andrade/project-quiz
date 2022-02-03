@@ -80,10 +80,10 @@ const questoes: QuestaoModel[] = [
   ]),
 
   new QuestaoModel(190, "Por quem Naruto prometeu que iria ganhar de Neji?", [
-    RespostaModel.errada("Gaara"),
+    RespostaModel.errada("Rock Lee"),
     RespostaModel.errada("Sakura"),
     RespostaModel.errada("Sasuke"),
-    RespostaModel.certa("Rock Lee"),
+    RespostaModel.certa("Hinata"),
   ]),
 
   new QuestaoModel(220, "Qual o nome do 2º hokage?", [
