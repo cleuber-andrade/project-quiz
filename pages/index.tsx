@@ -9,14 +9,14 @@ const BASE_URL = "http://localhost:3000/api";
 export default function Home() {  
   const router = useRouter();
 
-  const [idsDasQuestoes, setidsDasQuestoes] = useState<number[]>([])
+  const [idsDasQuestoes, setIdsDasQuestoes] = useState<number[]>([])
   const [questao, setQuestao] = useState<QuestaoModel>();
   const [respostasCertas, setRespostasCertas] = useState<number>(0)
 
   async function carregarIdsDasQuestoes() {
     const resp = await fetch(`${BASE_URL}/questionario`);
     const idsDasQuestoes = await resp.json();      
-    setidsDasQuestoes(idsDasQuestoes);    
+    setIdsDasQuestoes(idsDasQuestoes);    
   }
 
   async function carregarQuestao(idQuestao: number) {
@@ -40,13 +40,13 @@ export default function Home() {
     setRespostasCertas(respostasCertas + (acertou ? 1 : 0));    
   }
 
-  function IdProximaPergunda() {   
+  function idProximaPergunda() {   
     const proximoIndice = idsDasQuestoes.indexOf(questao.id) + 1;
     return idsDasQuestoes[proximoIndice];      
   }  
 
   function irParaProximoPasso() {
-    const proximoId = IdProximaPergunda();
+    const proximoId = idProximaPergunda();
     proximoId ? irPraProximaQuestao(proximoId) : finalizar()
   }
 
@@ -64,10 +64,10 @@ export default function Home() {
     })
   }
 
-  return  questao ? (
+  return questao ? (
       <Questionario 
         questao={questao}
-        ultima={IdProximaPergunda() === undefined}
+        ultima={idProximaPergunda() === undefined}
         questaoRespondida={questaoRespondida}
         irParaProximoPasso={irParaProximoPasso} />
     ) : false  
