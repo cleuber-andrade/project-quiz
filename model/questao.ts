@@ -24,7 +24,7 @@ export default class QuestaoModel {
     return this.#enunciado
   }
 
-  get resposta(){
+  get respostas(){
     return this.#respostas
   }
   
@@ -33,7 +33,7 @@ export default class QuestaoModel {
   }
 
   get naoRespondida(){
-    return !this.#respostas
+    return !this.respondida
   }
 
   get respondida(){
@@ -59,7 +59,7 @@ export default class QuestaoModel {
   }  
 
   static criarUsandoObjeto(objeto: QuestaoModel): QuestaoModel {
-    const respostas = objeto.resposta.map(resp => RespostaModel.criarUsandoObj(resp))
+    const respostas = objeto.respostas.map(resp => RespostaModel.criarUsandoObj(resp))
     return new QuestaoModel(objeto.id, objeto.enunciado, respostas, objeto.acertou)
   }
 
@@ -68,7 +68,7 @@ export default class QuestaoModel {
     return {
       id: this.#id,
       enunciado: this.#enunciado,
-      resposta: this.#respostas.map(resp => resp.converterParaObjeto()),
+      respostas: this.#respostas.map(resp => resp.converterParaObjeto()),
       respondida: this.respondida,
       acertou: this.#acertou,
     }
