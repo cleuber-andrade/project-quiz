@@ -16,7 +16,7 @@ export default function Resultado(){
       <div style={{display: "flex"}}>        
         <Estatistica texto="Perguntas" valor={total}/>
         <Estatistica texto="Certas" valor={certas} corFundo="#9cd2a4"/>
-        <Estatistica texto="Percentual" valor={`${percentual}`} corFundo="#de6a33"/>    
+        <Estatistica texto="Percentual" valor={`${percentual}%`} corFundo="#de6a33"/>    
       </div> 
       <Botao href="/" texto="Tentar novamente"/>       
     </div>
