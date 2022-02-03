@@ -16,29 +16,27 @@ export default function Home() {
   async function carregarIdsDasQuestoes() {
     const resp = await fetch(`${BASE_URL}/questionario`);
     const idsDasQuestoes = await resp.json();      
-    setidsDasQuestoes(idsDasQuestoes);
-    console.log(idsDasQuestoes)
+    setidsDasQuestoes(idsDasQuestoes);    
   }
 
   async function carregarQuestao(idQuestao: number) {
     const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`);
     const json = await resp.json();      
     const novaQuestao = QuestaoModel.criarUsandoObjeto(json);
-    setQuestao(novaQuestao);
-    console.log(novaQuestao)
+    setQuestao(novaQuestao);    
   }
 
   useEffect(()=> {    
     carregarIdsDasQuestoes();
-  },[])
+  }, [])
 
   useEffect(()=> {
     idsDasQuestoes.length > 0 && carregarQuestao(idsDasQuestoes[0]) 
   },[idsDasQuestoes])
 
-  function questaoRespondida(quesRespondida: QuestaoModel){   
-    setQuestao(quesRespondida)
-    const acertou = quesRespondida.acertou;
+  function questaoRespondida(questaoRespondida: QuestaoModel){   
+    setQuestao(questaoRespondida)
+    const acertou = questaoRespondida.acertou;
     setRespostasCertas(respostasCertas + (acertou ? 1 : 0));    
   }
 
@@ -71,7 +69,6 @@ export default function Home() {
         questao={questao}
         ultima={IdProximaPergunda() === undefined}
         questaoRespondida={questaoRespondida}
-        irParaProximoPasso={irParaProximoPasso}
-      />
+        irParaProximoPasso={irParaProximoPasso} />
     ) : false  
 }
